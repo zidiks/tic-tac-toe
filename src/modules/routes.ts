@@ -4,13 +4,13 @@ import { ScoreModule } from "./score/score.module";
 
 export const routes: Route[] = [
     {
-        bootstrap: true,
         patch: 'menu',
         module: MenuModule
     },
     {
         patch: 'score',
-        module: ScoreModule
+        module: ScoreModule,
+        bootstrap: true,
     },
     {
         patch: '*',
