@@ -3,6 +3,7 @@ import { routes } from "../modules/routes";
 export class Router {
 
     private appEl: HTMLElement;
+    private currentModule: any;
 
     constructor() {
         const body = document.body;
@@ -22,9 +23,15 @@ export class Router {
     public routeTo(patch: string): void {
         const currentRoute = routes.find(route => route.patch === patch) || routes.find(route => route.patch === '*');
         if (currentRoute) {
+            if (this.currentModule?.destroy) {
+                this.currentModule.destroy();
+            }
             const module = new currentRoute.module();
+            this.currentModule = module;
             this.appEl.innerHTML = module.template;
-            module.init();
+            if (module?.init) {
+                module.init();
+            }
             this.getAllLinks();
         } else {
             throw new Error('Cannot find a correct route.');
