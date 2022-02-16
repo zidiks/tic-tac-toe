@@ -1,5 +1,5 @@
-export interface Module {
+export interface ModuleModel {
     template: any;
-    init(): void;
+    init?(): void;
     destroy?(): void;
 }

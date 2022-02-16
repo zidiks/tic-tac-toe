@@ -1,8 +1,8 @@
-import { Module } from "../../core/module.model";
+import { ModuleCore } from "../../core/module";
 import template from "./score.module.html";
 import "./score.module.scss";
 
-export class ScoreModule implements Module {
+export class ScoreModule extends ModuleCore {
 
     public template = template;
 

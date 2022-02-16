@@ -19,7 +19,11 @@ module.exports = {
             hash: true,
             title: 'portfolio-webpack',
             template: './src/index.html',
-            filename: './index.html'
+            filename: './index.html',
+            templateParameters: {
+                myTitle: 'Hello freeCodeCamp!',
+                myColor: '#42ff87',
+            },
         }),
     ],
     module: {

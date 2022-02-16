@@ -1,14 +1,12 @@
-import template from "./menu.module.html";
+import template from "./profile.module.html";
 import { firebase } from "../../app";
-import "./menu.module.scss";
+import "./profile.module.scss";
 import { Unsubscribe } from "@firebase/firestore";
 import { ModuleCore } from "../../core/module";
 
-export class MenuModule extends ModuleCore {
+export class ProfileModule extends ModuleCore {
 
-    public title: string = 'Menu title';
-
-    public template = this.interpolate(template);
+    public template = template;
 
     private unsubscribe: Unsubscribe;
 

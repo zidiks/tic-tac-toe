@@ -9,13 +9,19 @@ export class Router {
         const body = document.body;
         this.appEl = document.createElement('app');
         body.appendChild(this.appEl);
-        this.routeTo( routes.find(route => route.bootstrap).patch );
+        setTimeout(() => {
+            this.routeTo( routes.find(route => route.bootstrap).patch );
+        });
     }
 
     public getAllLinks(): void {
         Array.from( document.querySelectorAll('route') ).forEach(el => {
             el.addEventListener('click', () => {
-                this.routeTo( el.getAttribute('src') );
+                const src = el.getAttribute('src');
+                if (src) {
+                    this.routeTo(src);
+                }
+
             });
         });
     }
