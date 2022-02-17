@@ -1,11 +1,17 @@
-import { ModuleCore } from "../../core/module";
 import template from "./score.module.html";
+import styles from "./score.module.scss"
+import { Module, ModuleCore } from "../../core/module";
 
+@Module({
+    styles: styles,
+    template: template
+})
 export class ScoreModule extends ModuleCore {
 
-    public template = template;
-
     public init(): void {
-        console.log('score dicks');
     }
+
+    public destroy(): void {
+    }
+
 }

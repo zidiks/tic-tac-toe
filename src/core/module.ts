@@ -37,7 +37,8 @@ export class ModuleCore implements ModuleModel {
             (function(k){
                 Object.defineProperty(propValue.parent, k, {
                     get:function() {
-                        return this[k + "_internal"];
+                        // @ts-ignore
+                        return thisClass[k + "_internal"];
                     },
                     set: function(x) {
                         thisClass.vChangeEls.find((el: HTMLElement) => el.getAttribute('prop') === prop).textContent = x;
@@ -48,11 +49,9 @@ export class ModuleCore implements ModuleModel {
             })(propValue.prop.name);
             return prop;
         });
-        console.log(this);
     }
 
     public replaceClasses(moduleEl: HTMLElement): void {
-        console.log(moduleEl);
         Object.keys(this.styles).forEach(cssClass => {
             Array.from(moduleEl.getElementsByClassName(cssClass)).forEach(el => {
                el.classList.remove(cssClass);

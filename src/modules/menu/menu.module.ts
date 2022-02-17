@@ -1,8 +1,9 @@
 import template from "./menu.module.html";
 import styles from "./menu.module.scss"
+import { Module, ModuleCore } from "../../core/module";
+
 import { firebase } from "../../app";
 import { Unsubscribe } from "@firebase/firestore";
-import { Module, ModuleCore } from "../../core/module";
 
 @Module({
     styles: styles,
@@ -14,11 +15,12 @@ export class MenuModule extends ModuleCore {
         playSingle: 'Play Single',
         playMultiplayer: 'Play Multiplayer'
     }
-    public title: string = 'Menu title';
+    public title: string = 'Menu';
     private unsubscribe: Unsubscribe;
 
     public init(): void {
         this.unsubscribe = firebase.getData();
+        console.log(this.title);
     }
 
     public destroy(): void {

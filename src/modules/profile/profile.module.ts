@@ -1,21 +1,17 @@
 import template from "./profile.module.html";
-import { firebase } from "../../app";
-import { Unsubscribe } from "@firebase/firestore";
-import { ModuleCore } from "../../core/module";
+import styles from "./profile.module.scss"
+import { Module, ModuleCore } from "../../core/module";
 
+@Module({
+    styles: styles,
+    template: template
+})
 export class ProfileModule extends ModuleCore {
 
-    public template = template;
-
-    private unsubscribe: Unsubscribe;
-
     public init(): void {
-        console.log('menu dicks');
-        this.unsubscribe = firebase.getData();
     }
 
     public destroy(): void {
-        console.log('menu closed');
-        this.unsubscribe();
     }
+
 }
