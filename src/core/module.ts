@@ -12,6 +12,7 @@ export const Module = (options: ModuleDecoratorOptions) => {
 export class ModuleCore implements ModuleModel {
 
     public template: string;
+    public styles: any;
     public vChangeEls: HTMLElement[] = [];
     public vProps: string[] = [];
 
@@ -48,6 +49,16 @@ export class ModuleCore implements ModuleModel {
             return prop;
         });
         console.log(this);
+    }
+
+    public replaceClasses(moduleEl: HTMLElement): void {
+        console.log(moduleEl);
+        Object.keys(this.styles).forEach(cssClass => {
+            Array.from(moduleEl.getElementsByClassName(cssClass)).forEach(el => {
+               el.classList.remove(cssClass);
+               el.classList.add(this.styles[cssClass]);
+            });
+        });
     }
 
 

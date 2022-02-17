@@ -36,6 +36,7 @@ export class Router {
             const module: ModuleModel = new currentRoute.module();
             this.currentModule = module;
             this.appEl.innerHTML = module.interpolate(module.template);
+            module.replaceClasses(this.appEl);
             module.doCheck();
             if (module?.init) {
                 module.init();
