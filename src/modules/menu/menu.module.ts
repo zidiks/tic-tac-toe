@@ -1,5 +1,5 @@
 import template from "./menu.module.html";
-import styles from "./menu.module.scss"
+import styles from "./menu.module.scss";
 import { Module, ModuleCore } from "../../core/module";
 
 import { firebase } from "../../app";
@@ -20,7 +20,6 @@ export class MenuModule extends ModuleCore {
 
     public init(): void {
         this.unsubscribe = firebase.getData();
-        console.log(this.title);
     }
 
     public destroy(): void {

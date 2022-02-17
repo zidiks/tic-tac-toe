@@ -60,7 +60,6 @@ export class ModuleCore implements ModuleModel {
         });
     }
 
-
     public interpolate(template: string): string {
         if (!template) {
             throw new Error(`Can't get template`);
