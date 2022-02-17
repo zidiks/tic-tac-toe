@@ -1,5 +1,9 @@
 @import "variables";
 @import "adaptive";
+//@import "../modules/menu/menu.module";
+//@import "../modules/lobby/lobby.module";
+//@import "../modules/profile/profile.module";
+//@import "../modules/score/score.module";
 
 html {
   scroll-behavior: smooth;
@@ -7,9 +11,4 @@ html {
 
 route {
   cursor: pointer;
-}
-
-.frame {
-  width: 100vw;
-  height: 100vh;
 }

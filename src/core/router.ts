@@ -1,4 +1,5 @@
 import { routes } from "../modules/routes";
+import { ModuleModel } from "./module.model";
 
 export class Router {
 
@@ -32,9 +33,10 @@ export class Router {
             if (this.currentModule?.destroy) {
                 this.currentModule.destroy();
             }
-            const module = new currentRoute.module();
+            const module: ModuleModel = new currentRoute.module();
             this.currentModule = module;
-            this.appEl.innerHTML = module.template;
+            this.appEl.innerHTML = module.interpolate(module.template);
+            module.doCheck();
             if (module?.init) {
                 module.init();
             }

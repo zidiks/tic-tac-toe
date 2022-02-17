@@ -1,19 +1,23 @@
 import template from "./menu.module.html";
+import styles from "./menu.module.scss"
 import { firebase } from "../../app";
-import "./menu.module.scss";
 import { Unsubscribe } from "@firebase/firestore";
-import { ModuleCore } from "../../core/module";
+import { Module, ModuleCore } from "../../core/module";
 
+@Module({
+    styles: styles,
+    template: template
+})
 export class MenuModule extends ModuleCore {
 
+    public buttons = {
+        playSingle: 'Play Single',
+        playMultiplayer: 'Play Multiplayer'
+    }
     public title: string = 'Menu title';
-
-    public template = this.interpolate(template);
-
     private unsubscribe: Unsubscribe;
 
     public init(): void {
-        console.log('menu dicks');
         this.unsubscribe = firebase.getData();
     }
 
@@ -21,4 +25,5 @@ export class MenuModule extends ModuleCore {
         console.log('menu closed');
         this.unsubscribe();
     }
+
 }

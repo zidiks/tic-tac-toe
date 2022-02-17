@@ -1,6 +1,5 @@
 import template from "./profile.module.html";
 import { firebase } from "../../app";
-import "./profile.module.scss";
 import { Unsubscribe } from "@firebase/firestore";
 import { ModuleCore } from "../../core/module";
 
