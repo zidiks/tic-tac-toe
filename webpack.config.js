@@ -1,5 +1,6 @@
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     mode: process.env.NODE_ENV,
@@ -10,6 +11,7 @@ module.exports = {
         library: "modules"
     },
     plugins: [
+        new MiniCssExtractPlugin(),
         new BrowserSyncPlugin({
             host: 'localhost',
             port: 3000,
@@ -19,7 +21,7 @@ module.exports = {
             hash: true,
             title: 'portfolio-webpack',
             template: './src/index.html',
-            filename: './index.html'
+            filename: './index.html',
         }),
     ],
     module: {
@@ -33,7 +35,7 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    "style-loader",
+                    MiniCssExtractPlugin.loader,
                     "css-loader",
                     "sass-loader",
                 ],

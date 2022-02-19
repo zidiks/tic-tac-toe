@@ -1,16 +1,26 @@
 import { Route } from "../core/route.model";
+import { LobbyModule } from "./lobby/lobby.module";
 import { MenuModule } from "./menu/menu.module";
+import { ProfileModule } from "./profile/profile.module";
 import { ScoreModule } from "./score/score.module";
 
 export const routes: Route[] = [
     {
         patch: 'menu',
-        module: MenuModule
+        module: MenuModule,
+        bootstrap: true,
     },
     {
         patch: 'score',
         module: ScoreModule,
-        bootstrap: true,
+    },
+    {
+        patch: 'profile',
+        module: ProfileModule,
+    },
+    {
+        patch: 'lobby',
+        module: LobbyModule,
     },
     {
         patch: '*',

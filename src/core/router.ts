@@ -1,4 +1,5 @@
 import { routes } from "../modules/routes";
+import { ModuleModel } from "./module.model";
 
 export class Router {
 
@@ -9,13 +10,19 @@ export class Router {
         const body = document.body;
         this.appEl = document.createElement('app');
         body.appendChild(this.appEl);
-        this.routeTo( routes.find(route => route.bootstrap).patch );
+        setTimeout(() => {
+            this.routeTo( routes.find(route => route.bootstrap).patch );
+        });
     }
 
     public getAllLinks(): void {
         Array.from( document.querySelectorAll('route') ).forEach(el => {
             el.addEventListener('click', () => {
-                this.routeTo( el.getAttribute('src') );
+                const src = el.getAttribute('src');
+                if (src) {
+                    this.routeTo(src);
+                }
+
             });
         });
     }
@@ -26,9 +33,11 @@ export class Router {
             if (this.currentModule?.destroy) {
                 this.currentModule.destroy();
             }
-            const module = new currentRoute.module();
+            const module: ModuleModel = new currentRoute.module();
             this.currentModule = module;
-            this.appEl.innerHTML = module.template;
+            this.appEl.innerHTML = module.interpolate(module.template);
+            module.replaceClasses(this.appEl);
+            module.doCheck();
             if (module?.init) {
                 module.init();
             }

@@ -1,12 +1,12 @@
-import template from "./score.module.html";
-import styles from "./score.module.scss"
+import template from "./lobby.module.html";
+import styles from "./lobby.module.scss"
 import { Module, ModuleCore } from "../../core/module";
 
 @Module({
     styles: styles,
     template: template
 })
-export class ScoreModule extends ModuleCore {
+export class LobbyModule extends ModuleCore {
 
     public init(): void {
     }
