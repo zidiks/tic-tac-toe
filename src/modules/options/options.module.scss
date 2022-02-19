@@ -39,5 +39,8 @@
     &__backward {
         margin-top: 26rem;
         margin-left: -17rem;
+        &:active {
+            transform: scale(0.85);
+        }
     }
 }

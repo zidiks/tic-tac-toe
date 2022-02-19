@@ -1,0 +1,31 @@
+.choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__title {
+        margin-left: 1rem;
+        font-family: 'Scrypta';
+        font-size: 50px;
+        margin-bottom: 6.5rem;
+    }
+    &__options {
+        display: flex;
+        justify-content: space-around;
+        width: 20rem;
+        & span {
+            font-family: 'Shadows Into Light', cursive;;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 10px;
+        }
+    }
+    &__home {
+        margin-top: 14.5rem;
+        margin-left: 1rem;
+        cursor: pointer;
+        &:active {
+            transform: scale(0.85);
+        }
+    }
+}

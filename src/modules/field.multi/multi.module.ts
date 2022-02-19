@@ -1,18 +1,18 @@
-import template from "./profile.module.html";
-import styles from "./profile.module.scss"
+import template from "./multi.module.html";
+import styles from "./multi.module.scss"
 import { Module, ModuleCore } from "../../core/module";
 
 @Module({
     styles: styles,
     template: template
 })
-export class ProfileModule extends ModuleCore {
+export class MultiModule extends ModuleCore {
 
     public init(): void {
     }
 
     public destroy(): void {
-        console.log('profile tab closed');
+        console.log('single game closed');
     }
 
 }
