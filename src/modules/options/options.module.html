@@ -1,1 +1,15 @@
-options page
+<div class="options">
+    <h1 class="options__title">Options</h1>
+    <div class="options__parameters">
+        <div class="options__parameters__sound">
+            <p>Sound FX</p>
+            <div>
+                <span onclick="turnSounds()">On</span>
+                <span onclick="turnSounds()">Off</span> <!-- По типу радиокнопки должно быть (:active добавил) -->
+            </div>
+        </div>
+    </div>
+    <route src="menu" class="options__backward">
+        <img src="../../assets/png/backward arrow.png" alt="backward arrow" width="90" height="40" style="cursor: pointer;">
+    </route>
+</div>

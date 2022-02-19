@@ -1,0 +1,43 @@
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__title {
+        font-family: 'Scrypta';
+        font-size: 50px;
+        margin-bottom: 6.4rem;
+    }
+    &__parameters {
+        align-items: flex-start;
+        font-family: 'Shadows Into Light', cursive;
+        font-size: 1.4rem;
+        &__sound {
+            display:  grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: 10rem;
+            & p {
+                margin: 0px;
+            }
+            & div {
+                width: 8rem;
+                display: flex;
+                grid-template-columns: repeat(2, 1fr);
+                justify-content: space-around;
+                & span {
+                    cursor: pointer;
+                    width: 30px;
+                    text-align: center;
+                    &:active {
+                        background-color: rgba(0, 0, 0, 0.781);
+                        border-radius: 100%;
+                        color: wheat;
+                    }
+                }
+            }
+        }
+    }
+    &__backward {
+        margin-top: 26rem;
+        margin-left: -17rem;
+    }
+}
