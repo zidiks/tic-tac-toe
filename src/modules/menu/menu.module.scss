@@ -2,13 +2,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  &__title {
+    font-family: 'Scrypta';
+    font-size: 50px;
+    margin-bottom: 5.7rem;
+  }
   &__list {
     display: flex;
     flex-direction: column;
     align-items: center;
     &-item {
-      margin: 0.5rem 0;
+      margin: 0.75rem 0;
+      font-family: 'Shadows Into Light', cursive;;
       font-size: 1.4rem;
     }
   }
+}
+
+@font-face {
+  font-family: 'Scrypta';
+  src: url('../../assets/fonts/scrypta.ttf');
 }

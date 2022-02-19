@@ -2,7 +2,7 @@ import template from "./menu.module.html";
 import styles from "./menu.module.scss";
 import { Module, ModuleCore } from "../../core/module";
 
-import { firebase } from "../../app";
+import { firebase, profile } from "../../app";
 import { Unsubscribe } from "@firebase/firestore";
 
 @Module({
@@ -13,7 +13,10 @@ export class MenuModule extends ModuleCore {
 
     public buttons = {
         playSingle: 'Play Single',
-        playMultiplayer: 'Play Multiplayer'
+        playMultiplayer: 'Play Multiplayer',
+        profile: 'Profile',
+        score: 'Score',
+        options: 'Options',
     }
     public title: string = 'Menu';
     private unsubscribe: Unsubscribe;

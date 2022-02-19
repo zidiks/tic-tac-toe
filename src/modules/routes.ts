@@ -3,6 +3,7 @@ import { LobbyModule } from "./lobby/lobby.module";
 import { MenuModule } from "./menu/menu.module";
 import { ProfileModule } from "./profile/profile.module";
 import { ScoreModule } from "./score/score.module";
+import { OptionsModule } from "./options/options.modue";
 
 export const routes: Route[] = [
     {
@@ -21,6 +22,10 @@ export const routes: Route[] = [
     {
         patch: 'lobby',
         module: LobbyModule,
+    },
+    {
+        patch: 'options',
+        module: OptionsModule,
     },
     {
         patch: '*',

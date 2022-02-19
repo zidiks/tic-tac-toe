@@ -22,7 +22,6 @@ export class Router {
                 if (src) {
                     this.routeTo(src);
                 }
-
             });
         });
     }

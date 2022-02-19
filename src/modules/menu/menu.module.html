@@ -1,5 +1,5 @@
 <div class="menu">
-    <h1>{ title }</h1>
+    <h1 class="menu__title">{ title }</h1>
     <div class="menu__list">
         <route>
             <div class="menu__list-item">
@@ -9,6 +9,16 @@
         <route>
             <div class="menu__list-item">
                 { buttons.playMultiplayer }
+            </div>
+        </route>
+        <route src="score">
+            <div class="menu__list-item">
+                { buttons.score }
+            </div>
+        </route>
+        <route src="options">
+            <div class="menu__list-item">
+                { buttons.options }
             </div>
         </route>
     </div>

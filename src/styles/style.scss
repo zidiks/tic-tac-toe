@@ -5,6 +5,14 @@ html {
   scroll-behavior: smooth;
 }
 
-route {
+route v-change{
   cursor: pointer;
+}
+
+body {
+  background-color: antiquewhite;
+  background-image: url('../assets/jpg/background.jpg');
+  background-repeat: no-repeat;
+  background-position: top;
+  height: 100%;
 }
