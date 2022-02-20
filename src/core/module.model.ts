@@ -3,7 +3,6 @@ export interface ModuleModel {
     styles?: any;
     init?(): void;
     destroy?(): void;
-    interpolate(template: string): string;
     doCheck(): void;
     replaceClasses(moduleEL: HTMLElement): void;
 }

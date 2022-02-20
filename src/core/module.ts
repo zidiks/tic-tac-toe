@@ -13,12 +13,9 @@ export class ModuleCore implements ModuleModel {
 
     public template: string;
     public styles: any;
-    public vChangeEls: HTMLElement[] = [];
-    public vProps: string[] = [];
 
-
-    public getProp(propString: string): any {
-        const result = this.propByObjString(this, propString);
+    public getProp(propString: string, cl: any): any {
+        const result = this.propByObjString(cl, propString);
         if (result) {
             return result;
         }
@@ -26,29 +23,8 @@ export class ModuleCore implements ModuleModel {
     }
 
     public doCheck(): void {
-        const thisClass = this;
-        this.vChangeEls = Array.from(document.querySelectorAll('v-change'));
-        this.vProps = this.vChangeEls.map(el => {
-            const prop = el.getAttribute('prop');
-            const propValue = this.getProp(prop);
-            el.textContent = propValue.prop.value;
-            // @ts-ignore
-            this[prop + "_internal"] = propValue.prop.value;
-            (function(k){
-                Object.defineProperty(propValue.parent, k, {
-                    get:function() {
-                        // @ts-ignore
-                        return thisClass[k + "_internal"];
-                    },
-                    set: function(x) {
-                        thisClass.vChangeEls.find((el: HTMLElement) => el.getAttribute('prop') === prop).textContent = x;
-                        // @ts-ignore
-                        thisClass[k + "_internal"] = x;
-                    }
-                });
-            })(propValue.prop.name);
-            return prop;
-        });
+        this.vBind(Array.from(document.querySelectorAll(`[v-bind]`)));
+
     }
 
     public replaceClasses(moduleEl: HTMLElement): void {
@@ -60,15 +36,40 @@ export class ModuleCore implements ModuleModel {
         });
     }
 
-    public interpolate(template: string): string {
-        if (!template) {
-            throw new Error(`Can't get template`);
-        }
-        const curlyRe = /\{(.+?)\}/g;
-        const replacer = (match: string) => {
-            return `<v-change prop='${match.replace(/\s+/g, '').slice(1,-1)}'></v-change>`
-        }
-        return template.replace(curlyRe, replacer);
+    private vBind(vBindEls: HTMLElement[]): void {
+        const propsSet = new Set();
+        vBindEls.forEach(el => {
+            const thisClass = this;
+            const prop = el.getAttribute('v-bind');
+            if (!propsSet.has(prop)) {
+                propsSet.add(prop);
+                const propValue = this.getProp(prop, thisClass);
+                el.textContent = propValue.prop.value;
+                // @ts-ignore
+                this[prop + "_internal"] = propValue.prop.value;
+                (function(k){
+                    Object.defineProperty(propValue.parent, k, {
+                        get:function() {
+                            // @ts-ignore
+                            return thisClass[k + "_internal"];
+                        },
+                        set: function(x) {
+                            const setEls = vBindEls.filter((el: HTMLElement) => el.getAttribute('v-bind') === prop);
+                            if (setEls.length > 0) {
+                                setEls.forEach((setEl => {
+                                    setEl.textContent = x;
+                                }))
+                            }
+                            // @ts-ignore
+                            thisClass[k + "_internal"] = x;
+                        }
+                    });
+                })(propValue.prop.name);
+            } else {
+                // @ts-ignore
+                el.textContent = thisClass[prop + "_internal"];
+            }
+        });
     }
 
     public propByObjString (o: any, s: string): any {
@@ -81,6 +82,7 @@ export class ModuleCore implements ModuleModel {
             if (i === n - 1) {
                 parent = o;
             }
+            const r = o[k];
             if (k in o) {
                 o = o[k];
             } else {

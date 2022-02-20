@@ -2,7 +2,7 @@ import template from "./menu.module.html";
 import styles from "./menu.module.scss";
 import { Module, ModuleCore } from "../../core/module";
 
-import { firebase, profile } from "../../app";
+import { firebase } from "../../app";
 import { Unsubscribe } from "@firebase/firestore";
 
 @Module({
