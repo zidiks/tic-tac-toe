@@ -13,6 +13,7 @@ export class ModuleCore implements ModuleModel {
 
     public template: string;
     public styles: any;
+    public propsSet: Set<any>;
 
     public getProp(propString: string, cl: any): any {
         const result = this.propByObjString(cl, propString);
@@ -24,7 +25,7 @@ export class ModuleCore implements ModuleModel {
 
     public doCheck(): void {
         this.vBind(Array.from(document.querySelectorAll(`[v-bind]`)));
-
+        this.vClick(Array.from(document.querySelectorAll(`[v-click]`)));
     }
 
     public replaceClasses(moduleEl: HTMLElement): void {
@@ -36,20 +37,39 @@ export class ModuleCore implements ModuleModel {
         });
     }
 
+    public vClick(vClickEls: HTMLElement[]): void {
+        const thisCLass = this;
+        vClickEls.forEach(el => {
+            const prop = el.getAttribute('v-click');
+            const methodName = prop.split('(')[0];
+            const attrName = prop.split('(')[1].split(')')[0];
+            const methodValue = this.getProp(methodName, this);
+            if (attrName.length > 0) {
+                el.onclick = (e) => {
+                    // @ts-ignore
+                    const attrValue = thisCLass.propsSet.has(attrName) ? thisCLass[attrName + "_internal"] : thisCLass.getProp(attrName, thisCLass).prop.value;
+                    methodValue.prop.value(e, attrValue);
+                };
+            } else {
+                el.onclick = methodValue.prop.value;
+            }
+        });
+    }
+
     private vBind(vBindEls: HTMLElement[]): void {
-        const propsSet = new Set();
+        this.propsSet = new Set();
         vBindEls.forEach(el => {
             const thisClass = this;
             const prop = el.getAttribute('v-bind');
-            if (!propsSet.has(prop)) {
-                propsSet.add(prop);
+            if (!thisClass.propsSet.has(prop)) {
+                thisClass.propsSet.add(prop);
                 const propValue = this.getProp(prop, thisClass);
                 el.textContent = propValue.prop.value;
                 // @ts-ignore
                 this[prop + "_internal"] = propValue.prop.value;
                 (function(k){
-                    Object.defineProperty(propValue.parent, k, {
-                        get:function() {
+                    Object.defineProperty(propValue.parent, propValue.prop.name, {
+                        get: function() {
                             // @ts-ignore
                             return thisClass[k + "_internal"];
                         },
@@ -64,7 +84,7 @@ export class ModuleCore implements ModuleModel {
                             thisClass[k + "_internal"] = x;
                         }
                     });
-                })(propValue.prop.name);
+                })(prop);
             } else {
                 // @ts-ignore
                 el.textContent = thisClass[prop + "_internal"];
@@ -82,7 +102,6 @@ export class ModuleCore implements ModuleModel {
             if (i === n - 1) {
                 parent = o;
             }
-            const r = o[k];
             if (k in o) {
                 o = o[k];
             } else {

@@ -21,6 +21,10 @@ export class MenuModule extends ModuleCore {
     public title: string = 'Menu';
     private unsubscribe: Unsubscribe;
 
+    public lolka = () => {
+        console.log('lolka');
+    }
+
     public init(): void {
         this.unsubscribe = firebase.getData();
     }
