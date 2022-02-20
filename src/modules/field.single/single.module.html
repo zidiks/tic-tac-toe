@@ -1,33 +1,18 @@
 <div class="field">
     <h1 class="field__title">Fight</h1>
+    <div class="field__turn-wrapper">
+        <p id="turn" class="field__turn" v-bind="turn"></p>
+    </div>
     <div class="field__layout">
-        <div v-click="fieldClick(fieldIndexes[0][0])" v-bind="field[0][0]" class="field__layout__cell" style="border-right: solid 5px rgba(0, 0, 0, 0.603); border-bottom: solid 5px rgba(0, 0, 0, 0.603);">
-
-        </div>
-        <div v-click="fieldClick(fieldIndexes[0][1])" v-bind="field[0][1]" class="field__layout__cell" style="border-bottom: solid 5px rgba(0, 0, 0, 0.603); border-right: solid 5px rgba(0, 0, 0, 0.603);">
-
-        </div>
-        <div v-click="fieldClick(fieldIndexes[0][2])" v-bind="field[0][2]" class="field__layout__cell" style="border-bottom: solid 5px rgba(0, 0, 0, 0.603);">
-
-        </div>
-        <div v-click="fieldClick(fieldIndexes[1][0])" v-bind="field[1][0]" class="field__layout__cell" style="border-bottom: solid 5px rgba(0, 0, 0, 0.603); border-right: solid 5px rgba(0, 0, 0, 0.603);">
-
-        </div>
-        <div v-click="fieldClick(fieldIndexes[1][1])" v-bind="field[1][1]" class="field__layout__cell" style="border-bottom: solid 5px rgba(0, 0, 0, 0.603); border-right: solid 5px rgba(0, 0, 0, 0.603);">
-
-        </div>
-        <div v-click="fieldClick(fieldIndexes[1][2])" v-bind="field[1][2]" class="field__layout__cell" style="border-bottom: solid 5px rgba(0, 0, 0, 0.603);">
-
-        </div>
-        <div v-click="fieldClick(fieldIndexes[2][0])" v-bind="field[2][0]" class="field__layout__cell" style="border-right: solid 5px rgba(0, 0, 0, 0.603);">
-
-        </div>
-        <div v-click="fieldClick(fieldIndexes[2][1])" v-bind="field[2][1]" class="field__layout__cell" style="border-right: solid 5px rgba(0, 0, 0, 0.603);">
-
-        </div>
-        <div v-click="fieldClick(fieldIndexes[2][2])" v-bind="field[2][2]" class="field__layout__cell">
-
-        </div>
+        <div v-click="click(boardIndexes[0])" v-bind="board[0]" class="field__layout__cell" style="border-right: solid 5px rgba(0, 0, 0, 0.603); border-bottom: solid 5px rgba(0, 0, 0, 0.603);"></div>
+        <div v-click="click(boardIndexes[1])" v-bind="board[1]" class="field__layout__cell" style="border-bottom: solid 5px rgba(0, 0, 0, 0.603); border-right: solid 5px rgba(0, 0, 0, 0.603);"></div>
+        <div v-click="click(boardIndexes[2])" v-bind="board[2]" class="field__layout__cell" style="border-bottom: solid 5px rgba(0, 0, 0, 0.603);"></div>
+        <div v-click="click(boardIndexes[3])" v-bind="board[3]" class="field__layout__cell" style="border-bottom: solid 5px rgba(0, 0, 0, 0.603); border-right: solid 5px rgba(0, 0, 0, 0.603);"></div>
+        <div v-click="click(boardIndexes[4])" v-bind="board[4]" class="field__layout__cell" style="border-bottom: solid 5px rgba(0, 0, 0, 0.603); border-right: solid 5px rgba(0, 0, 0, 0.603);"></div>
+        <div v-click="click(boardIndexes[5])" v-bind="board[5]" class="field__layout__cell" style="border-bottom: solid 5px rgba(0, 0, 0, 0.603);"></div>
+        <div v-click="click(boardIndexes[6])" v-bind="board[6]" class="field__layout__cell" style="border-right: solid 5px rgba(0, 0, 0, 0.603);"></div>
+        <div v-click="click(boardIndexes[7])" v-bind="board[7]" class="field__layout__cell" style="border-right: solid 5px rgba(0, 0, 0, 0.603);"></div>
+        <div v-click="click(boardIndexes[8])" v-bind="board[8]" class="field__layout__cell"></div>
     </div>
     <route src="menu" class="field__home">
         <img src="../../assets/png/house.png" alt="house picture" width="64" height="64">
