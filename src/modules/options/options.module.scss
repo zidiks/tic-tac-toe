@@ -1,3 +1,5 @@
+@import "../../styles/adaptive.scss";
+
 .options {
     display: flex;
     flex-direction: column;
@@ -15,6 +17,9 @@
             display:  grid;
             grid-template-columns: repeat(2, 1fr);
             column-gap: 10rem;
+            @include breakpoint(sm) {
+                column-gap: 0px;
+            }
             & p {
                 margin: 0px;
             }
@@ -23,24 +28,63 @@
                 display: flex;
                 grid-template-columns: repeat(2, 1fr);
                 justify-content: space-around;
-                & span {
-                    cursor: pointer;
-                    width: 30px;
-                    text-align: center;
-                    &:active {
-                        background-color: rgba(0, 0, 0, 0.781);
-                        border-radius: 100%;
-                        color: wheat;
-                    }
+            }
+        }
+        &__difficulty {
+            display:  grid;
+            grid-template-columns: repeat(2, 1fr);
+            @include breakpoint(sm) {
+                align-items: center;
+                column-gap: 3rem;
+            }
+            & p {
+                margin: 0px;
+            }
+            & div {
+                width: 10rem;
+                column-gap: 2rem;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                justify-content: space-around;
+                @include breakpoint(sm) {
+                    grid-template-columns: repeat(1, 1fr);
+                    grid-template-rows: repeat(3, 1fr);
                 }
             }
         }
     }
     &__backward {
-        margin-top: 26rem;
+        margin-top: 25.5rem;
         margin-left: -17rem;
         &:active {
             transform: scale(0.85);
         }
+    }
+}
+
+.on {
+    cursor: pointer;
+    width: 30px;
+    text-align: center;
+    &-active {
+    cursor: pointer;
+    width: 30px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.781);
+    border-radius: 100%;
+    color: wheat;
+    }
+}
+
+.dif {
+    cursor: pointer;
+    text-align: center;
+    &-active {
+    cursor: pointer;
+    padding-inline: 10px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.781);
+    border-radius: 100%;
+    color: wheat;
     }
 }

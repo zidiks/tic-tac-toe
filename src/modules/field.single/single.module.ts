@@ -4,6 +4,7 @@ import { Module, ModuleCore } from "../../core/module";
 import {Game} from "../../shared/game";
 import {AI} from "../../shared/ai";
 import {State} from "../../shared/state";
+import { difficulty } from "../options/options.module";
 
 export type fieldValue = '' | '×' | '○'
 
@@ -21,7 +22,7 @@ export class SingleModule extends ModuleCore {
     public boardIndexes: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     public turn: string = 'Waiting...';
 
-    public game: Game = new Game(new AI(2), this);
+    public game: Game = new Game(new AI(difficulty), this);
 
     public click = (e: any, value: number) => {
         if(this.game.status === "running" && this.game.currentState.turn === "X" && !this.board[value]) {

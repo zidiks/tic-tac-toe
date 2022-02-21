@@ -1,3 +1,5 @@
+@import "../../styles/adaptive.scss";
+
 .field {
     display: flex;
     flex-direction: column;
@@ -6,17 +8,24 @@
         margin-left: 5rem;
         font-family: 'Scrypta', serif;
         font-size: 50px;
-        margin-bottom: 3rem;
+        margin-bottom: 10px;
+        @include breakpoint(sm) {
+            margin-left: 0px;
+        }
     }
     &__turn {
-        font-family: 'Scrypta', serif;
+        font-family: 'Shadows Into Light', cursive;
         font-size: 30px;
         transform: translateY(-0.4rem);
+        height: 2rem;
+        margin-block-start: 0px;
         &-wrapper {
             margin-left: 5rem;
-            width: 40rem;
             display: flex;
             justify-content: center;
+            @include breakpoint(sm) {
+                margin-left: 0px;
+            }
         }
     }
     &__layout {
@@ -24,6 +33,9 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
+        @include breakpoint(sm) {
+            margin-left: 0px;
+        }
         &__cell {
             width: 180px;
             height: 180px;
@@ -33,14 +45,38 @@
             font-size: 6rem;
             user-select: none;
             cursor: pointer;
+            @include breakpoint(sm) {
+                width: 90px;
+                height: 90px;
+            }
+            @include breakpoint(m) {
+                width: 70px;
+                height: 70px;
+            }
         }
     }
     &__home {
         margin-top: 3rem;
-        margin-left: 4.5rem;
         cursor: pointer;
         &:active {
             transform: scale(0.85);
         }
+    }
+    &__update {
+        margin-top: 3rem;
+        margin-left: 4rem;
+        cursor: pointer;
+        &:active {
+            transform: scale(0.85);
+        }
+    }
+}
+
+.controls {
+    margin-left: 5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    @include breakpoint(sm) {
+        margin-left: 0px;
     }
 }

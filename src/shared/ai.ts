@@ -1,5 +1,6 @@
 import {State} from "./state";
 import {Game} from "./game";
+import { difficulty } from "../modules/options/options.module";
 
 export type LevelOfIntelligence = 1 | 2 | 3;
 

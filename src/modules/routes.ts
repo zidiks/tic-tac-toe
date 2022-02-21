@@ -3,7 +3,7 @@ import { LobbyModule } from "./lobby/lobby.module";
 import { MenuModule } from "./menu/menu.module";
 import { ProfileModule } from "./profile/profile.module";
 import { ScoreModule } from "./score/score.module";
-import { OptionsModule } from "./options/options.modue";
+import { OptionsModule } from "./options/options.module";
 import { SingleModule } from "./field.single/single.module";
 import { MultiModule } from "./field.multi/multi.module";
 import { ChoiceModule } from "./choice/choice.module";

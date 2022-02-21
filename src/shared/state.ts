@@ -1,9 +1,13 @@
+import { isSounds } from "../modules/options/options.module";
+
 export class State {
 
     public turn = "";
     public oMovesCount = 0;
     public result = "still running";
     public board: any[] = [];
+    public crossSound = <HTMLAudioElement> document.getElementById('cross');
+    public circleSound = <HTMLAudioElement> document.getElementById('circle');
 
     constructor(old?: State) {
         if(typeof old !== "undefined") {
@@ -20,7 +24,16 @@ export class State {
         }
     }
 
+    public sound() {
+        if (this.turn == "X" && isSounds == true) {
+            this.crossSound.play();
+            } else if (this.turn == "O" && isSounds == true) {
+            this.circleSound.play();
+            }
+    }
+
     public advanceTurn() {
+        this.sound();
         this.turn = this.turn === "X" ? "O" : "X";
     }
 

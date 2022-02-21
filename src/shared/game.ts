@@ -32,12 +32,12 @@ export class Game {
 
             if(_state.result === "X-won") {
                 //X won
-                this.module.turn = "Won";
+                this.module.turn = "X won!";
                 document.getElementById('turn').style.color = 'green';
             }
             else if(_state.result === "O-won") {
                 //X lost
-                this.module.turn = "Lost";
+                this.module.turn = "O won!";
                 document.getElementById('turn').style.color = 'red';
             }
             else {
