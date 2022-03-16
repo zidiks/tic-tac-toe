@@ -1,0 +1,31 @@
+@import "../../styles/adaptive.scss";
+
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__title {
+        margin-left: 5rem;
+        font-family: 'Scrypta';
+        font-size: 50px;
+        margin-bottom: 3rem;
+    }
+    &__layout {
+        margin-left: 5rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        &__cell {
+            width: 180px;
+            height: 180px;
+        }
+    }
+    &__home {
+        margin-top: 3rem;
+        margin-left: 4.5rem;
+        cursor: pointer;
+        &:active {
+            transform: scale(0.85);
+        }
+    }
+}

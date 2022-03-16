@@ -1,22 +1,32 @@
-import { Module } from "../../core/module.model";
 import template from "./menu.module.html";
-import { firebase } from "../../app";
-import "./menu.module.scss";
+import styles from "./menu.module.scss";
+import { Module, ModuleCore } from "../../core/module";
+
 import { Unsubscribe } from "@firebase/firestore";
 
-export class MenuModule implements Module {
+@Module({
+    styles: styles,
+    template: template
+})
+export class MenuModule extends ModuleCore {
 
-    public template = template;
-
-    private unsubscribe: Unsubscribe;
+    public buttons = {
+        playSingle: 'Play Single',
+        playMultiplayer: 'Play Multiplayer',
+        profile: 'Profile',
+        score: 'Score',
+        options: 'Options',
+    }
+    public title: string = 'Menu';
+    
+    public lolka = () => {
+        console.log('lolka');
+    }
 
     public init(): void {
-        console.log('menu dicks');
-        this.unsubscribe = firebase.getData();
     }
 
     public destroy(): void {
-        console.log('menu closed');
-        this.unsubscribe();
     }
+
 }

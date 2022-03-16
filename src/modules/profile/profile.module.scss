@@ -1,0 +1,25 @@
+@import "../../styles/adaptive.scss";
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__work {
+        font-family: 'Shadows Into Light', cursive;;
+        font-size: 1.4rem;
+        width: 33rem;
+    }
+    &__title {
+        font-family: 'Scrypta';
+        font-size: 50px;
+        margin-bottom: 6.5rem;
+    }
+    &__home {
+        margin-top: 25rem;
+        margin-left: 1rem;
+        cursor: pointer;
+        &:active {
+            transform: scale(0.85);
+        }
+    }
+}

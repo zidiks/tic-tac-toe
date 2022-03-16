@@ -1,0 +1,23 @@
+<div class="options">
+    <h1 class="options__title">Options</h1>
+    <div class="options__parameters">
+        <div class="options__parameters__sound">
+            <p>Sound FX</p>
+            <div>
+                <span class="on" id="on" v-click="soundsOn()">On</span>
+                <span class="on" id="off" v-click="soundsOff()">Off</span>
+            </div>
+        </div>
+        <div class="options__parameters__difficulty">
+            <p>Difficulty</p>
+            <div class="difficulties">
+                <span id="easy" class="dif" v-click="changeDifficulty1()">Easy</span>
+                <span id="medium" class="dif" v-click="changeDifficulty2()">Medium</span>
+                <span id="hard" class="dif" v-click="changeDifficulty3()">Hard</span>
+            </div>
+        </div>
+    </div>
+    <route src="menu" class="options__backward">
+        <img src="../../assets/png/backward arrow.png" alt="backward arrow" width="90" height="40" style="cursor: pointer;">
+    </route>
+</div>
