@@ -7,6 +7,7 @@ import { OptionsModule } from "./options/options.module";
 import { SingleModule } from "./field.single/single.module";
 import { MultiModule } from "./field.multi/multi.module";
 import { ChoiceModule } from "./choice/choice.module";
+import { LocalModule } from "./field.local/local.module";
 
 export const routes: Route[] = [
     {
@@ -41,6 +42,10 @@ export const routes: Route[] = [
     {
         patch: 'multi-choice',
         module: ChoiceModule,
+    },
+    {
+        patch: 'local',
+        module: LocalModule,
     },
     {
         patch: '*',
